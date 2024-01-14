@@ -1,14 +1,11 @@
-[build-system]
-requires = ["setuptools", "wheel"]
-
 [project]
-scripts = { "java-tools" = "java_tools.__main__:main" }
-name = "java-tools"
+name = "javautils"
 version = "0.1.0"
 description = "A python based CLI tool to simplify the time consuming, repetitive tasks of Java development."
 readme = "README.md"
 authors = [{ name = "Atharv Kurdukar", email = "3atharvkurdukar@gmail.com" }]
-license = "MIT"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
@@ -17,6 +14,17 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Topic :: Software Development :: Build Tools",
 ]
+dependencies = ["click>=8.1.7", "PyInquirer>=1.0.3", "stashy>=0.7"]
+
+[project.scripts]
+javautils = "src.javautils.main:main"
+
+
+[tool.pdm.scripts]
+javautils.call = "src.javautils.main:main"
+
+[tool.pdm]
+package-type = "application"
 
 [tool.black]
 line-length = 88
